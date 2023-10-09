@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TopTrump.Models;
 
 namespace TopTrump.Data
 {
@@ -9,5 +10,8 @@ namespace TopTrump.Data
             : base(options)
         {
         }
+
+        public DbSet<Card> Cards { get; set; }
+        public DbSet<Deck> Decks { get; set; }
     }
 }

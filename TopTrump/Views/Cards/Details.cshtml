@@ -1,0 +1,54 @@
+﻿@model TopTrump.Models.Card
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Card</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CardName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CardName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stat1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stat1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stat2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stat2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stat3)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stat3)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stat4)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stat4)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.CardId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

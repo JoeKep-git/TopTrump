@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TopTrump.Models.Deck>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeckName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stat1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stat2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stat3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stat4)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeckName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stat1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stat2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stat3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stat4)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DeckId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.DeckId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.DeckId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
