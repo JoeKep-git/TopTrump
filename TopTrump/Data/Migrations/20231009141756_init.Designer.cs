@@ -12,7 +12,7 @@ using TopTrump.Data;
 namespace TopTrump.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231009140825_init")]
+    [Migration("20231009141756_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -361,11 +361,13 @@ namespace TopTrump.Data.Migrations
 
             modelBuilder.Entity("TopTrump.Models.Card", b =>
                 {
-                    b.HasOne("TopTrump.Models.Deck", null)
+                    b.HasOne("TopTrump.Models.Deck", "Deck")
                         .WithMany("Cards")
                         .HasForeignKey("DeckId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Deck");
                 });
 
             modelBuilder.Entity("TopTrump.Models.Deck", b =>

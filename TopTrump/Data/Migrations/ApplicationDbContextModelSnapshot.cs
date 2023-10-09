@@ -358,11 +358,13 @@ namespace TopTrump.Data.Migrations
 
             modelBuilder.Entity("TopTrump.Models.Card", b =>
                 {
-                    b.HasOne("TopTrump.Models.Deck", null)
+                    b.HasOne("TopTrump.Models.Deck", "Deck")
                         .WithMany("Cards")
                         .HasForeignKey("DeckId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Deck");
                 });
 
             modelBuilder.Entity("TopTrump.Models.Deck", b =>

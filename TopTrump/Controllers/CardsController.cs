@@ -22,9 +22,8 @@ namespace TopTrump.Controllers
         // GET: Cards
         public async Task<IActionResult> Index()
         {
-              return _context.Cards != null ? 
-                          View(await _context.Cards.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Cards'  is null.");
+            var applicationDbContext = _context.Cards.Include(c => c.Deck);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Cards/Details/5
@@ -36,6 +35,7 @@ namespace TopTrump.Controllers
             }
 
             var card = await _context.Cards
+                .Include(c => c.Deck)
                 .FirstOrDefaultAsync(m => m.CardId == id);
             if (card == null)
             {
@@ -48,6 +48,7 @@ namespace TopTrump.Controllers
         // GET: Cards/Create
         public IActionResult Create()
         {
+            ViewData["DeckId"] = new SelectList(_context.Decks, "DeckId", "DeckName");
             return View();
         }
 
@@ -64,6 +65,7 @@ namespace TopTrump.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["DeckId"] = new SelectList(_context.Decks, "DeckId", "DeckName", card.DeckId);
             return View(card);
         }
 
@@ -80,6 +82,7 @@ namespace TopTrump.Controllers
             {
                 return NotFound();
             }
+            ViewData["DeckId"] = new SelectList(_context.Decks, "DeckId", "DeckName", card.DeckId);
             return View(card);
         }
 
@@ -115,6 +118,7 @@ namespace TopTrump.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["DeckId"] = new SelectList(_context.Decks, "DeckId", "DeckName", card.DeckId);
             return View(card);
         }
 
@@ -127,6 +131,7 @@ namespace TopTrump.Controllers
             }
 
             var card = await _context.Cards
+                .Include(c => c.Deck)
                 .FirstOrDefaultAsync(m => m.CardId == id);
             if (card == null)
             {
