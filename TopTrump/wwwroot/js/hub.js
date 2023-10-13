@@ -6,6 +6,7 @@ const connection = new signalR.HubConnectionBuilder()
 
 connection.start().then(() => {
     // Connection established
+    console.log("iuhdwidhdiokawndk");
 }).catch(err => {
     console.error(err.toString());
 });

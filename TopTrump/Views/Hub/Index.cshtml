@@ -1,7 +1,12 @@
 ﻿@{
-    ViewData["Title"] = "Top Trumps Hub";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{
+    ViewData["Title"] = "Index";
+}
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
 <div class="container">
     <div class="row p-1">
         <div class="col-1">Lobby Name</div>
