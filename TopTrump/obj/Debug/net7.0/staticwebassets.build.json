@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KKiYqEw4O24sVxzm3AMd1xcv96JPjMdXvOiKYTSgXvQ=",
+  "Hash": "M5PAMhkVPMbWKd6r5XY+tBQEjK/fvGGUvqybSoI8N6M=",
   "Source": "TopTrump",
   "BasePath": "_content/TopTrump",
   "Mode": "Default",
@@ -1103,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\ohhja\\Github SSD\\Novus\\TopTrump\\TopTrump\\TopTrump\\wwwroot\\js\\hub.js",
+      "SourceId": "TopTrump",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ohhja\\Github SSD\\Novus\\TopTrump\\TopTrump\\TopTrump\\wwwroot\\",
+      "BasePath": "_content/TopTrump",
+      "RelativePath": "js/hub.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\hub.js"
     },
     {
       "Identity": "C:\\Users\\ohhja\\Github SSD\\Novus\\TopTrump\\TopTrump\\TopTrump\\wwwroot\\js\\site.js",
