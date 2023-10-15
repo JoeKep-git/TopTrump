@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
 
 namespace TopTrump.Hubs
 {
+    [Authorize]
     public class LobbyHub : Hub
     {
         public async Task CreateLobby(string lobbyName)
