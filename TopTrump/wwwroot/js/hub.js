@@ -6,7 +6,7 @@ const connection = new signalR.HubConnectionBuilder()
 
 connection.start().then(() => {
     // Connection established
-    console.log("iuhdwidhdiokawndk");
+    console.log("Connection Established");
 }).catch(err => {
     console.error(err.toString());
 });
@@ -16,8 +16,9 @@ document.getElementById("createLobbyBtn").addEventListener("click", function () 
     connection.invoke("CreateLobby", lobbyName).catch(err => {
         console.error(err.toString());
     });
-});
 
+    console.log("testing????");
+});
 document.getElementById("joinLobbyBtn").addEventListener("click", function () {
     let lobbyName = document.getElementById("lobbyNameInput").value;
     let playerName = document.getElementById("playerNameInput").value;
@@ -25,7 +26,6 @@ document.getElementById("joinLobbyBtn").addEventListener("click", function () {
         console.error(err.toString());
     });
 });
-
 connection.on("UpdateLobbies", function (lobbyName) {
     var li = document.createElement("li");
     document.getElementById("lobbyList");
