@@ -37,6 +37,11 @@ namespace TopTrump.Models
         public Deck Deck { get; set; }
 
         [MaxLength(255)]
+        [Display(Name = "Image")]
+        [DataType(DataType.Text)]
+        public string? Image { get; set; }
+
+        [MaxLength(255)]
         [Display(Name = "Description")]
         [DataType(DataType.Text)]
         public string? Description { get; set; }

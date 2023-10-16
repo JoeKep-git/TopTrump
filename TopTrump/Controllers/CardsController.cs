@@ -91,7 +91,7 @@ namespace TopTrump.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CardId,CardName,Stat1,Stat2,Stat3,Stat4,DeckId,Description")] Card card)
+        public async Task<IActionResult> Edit(int id, [Bind("CardId,CardName,Stat1,Stat2,Stat3,Stat4,DeckId,Image,Description")] Card card)
         {
             if (id != card.CardId)
             {
