@@ -16,6 +16,8 @@ document.getElementById("createLobbyBtn").addEventListener("click", function () 
     connection.invoke("CreateLobby", lobbyName).catch(err => {
         console.error(err.toString());
     });
+
+    console.log("testing????");
 });
 
 document.getElementById("joinLobbyBtn").addEventListener("click", function () {
