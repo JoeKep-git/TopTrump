@@ -1,0 +1,22 @@
+﻿@model TopTrump.Models.ChooseGameViewModel
+
+<h2>Choose Difficulty</h2>
+<form asp-controller="Game" asp-action="StartGame" method="post">
+    <label for="difficulty">Select Difficulty:</label>
+    <select name="difficulty" id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+    </select>
+
+    <h2>Select Deck</h2>
+<label for="deck">Select Deck:</label>
+<select name="deck" id="deck">
+    @foreach (var deck in Model.AvailableDecks)
+    {
+        <option value="@deck.DeckId">@deck.DeckName</option>
+    }
+</select>
+
+    <input type="submit" value="Start Game">
+</form>
