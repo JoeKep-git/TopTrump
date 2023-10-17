@@ -1,0 +1,8 @@
+﻿@model TopTrump.Models.CardViewModel
+@using TopTrump.Views.Test.Components
+
+
+@{ var cardData = Model.Card; }
+<h1>Test page</h1>
+@*<CardView myCard="@cardData"/>*@
+@Html.Partial("Components/CardView", Model)
