@@ -26,7 +26,7 @@ namespace TopTrump.Hubs
         {
             if (lobbies.ContainsKey(lobbyName))
             {
-                lobbies[lobbyName].Add(Context.User.Identity.Name);
+                lobbies[lobbyName].Add(Context.User.Identity.Name); //may need to changing for identity that we use
                 await Groups.AddToGroupAsync(Context.ConnectionId, lobbyName);
                 await Clients.Group(lobbyName).SendAsync("PlayerJoined", Context.User.Identity.Name);
             }
