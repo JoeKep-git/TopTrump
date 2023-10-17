@@ -6,18 +6,49 @@ namespace TopTrump.Hubs
     [Authorize]
     public class LobbyHub : Hub
     {
+        private static Dictionary<string, List<string>> lobbies = new Dictionary<string, List<string>>();
         public async Task CreateLobby(string lobbyName)
         {
-            // Create a new lobby
-            // You may want to add lobby to a list or store in a database
-            await Clients.All.SendAsync("UpdateLobbies");
+            if (!lobbies.ContainsKey(lobbyName))
+            {
+                lobbies.Add(lobbyName, new List<string>());
+                await Clients.All.SendAsync("UpdateLobbies", lobbyName);
+                await Clients.Caller.SendAsync("LobbyCreated", lobbyName);
+            }
+            else
+            {
+                await Clients.Caller.SendAsync("LobbyNameExists", lobbyName);
+            }
+
         }
 
-        public async Task JoinLobby(string lobbyName, string playerName)
+        public async Task JoinLobby(string lobbyName)
         {
-            // Add player to the lobby
-            // Notify other players in the lobby
-            await Clients.All.SendAsync("UpdateLobbies");
+            if (lobbies.ContainsKey(lobbyName))
+            {
+                lobbies[lobbyName].Add(Context.User.Identity.Name); //may need to changing for identity that we use
+                await Groups.AddToGroupAsync(Context.ConnectionId, lobbyName);
+                Console.WriteLine("Lobby Join: User: " + Context.User.Identity.Name + " LobbyName: " + lobbyName);
+                await Clients.Group(lobbyName).SendAsync("PlayerJoined", Context.User.Identity.Name, lobbyName);
+            }
+            else
+            {
+                await Clients.Caller.SendAsync("LobbyNotFound", lobbyName);
+            }
+        }
+
+        public override async Task OnDisconnectedAsync(Exception exception)
+        {
+            foreach (var lobby in lobbies)
+            {
+                if (lobby.Value.Contains(Context.User.Identity.Name))
+                {
+                    lobby.Value.Remove(Context.User.Identity.Name);
+                    await Clients.Group(lobby.Key).SendAsync("PlayerLeft", Context.User.Identity.Name);
+                }
+            }
+
+            await base.OnDisconnectedAsync(exception);
         }
     }
 
