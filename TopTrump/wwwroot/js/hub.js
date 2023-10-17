@@ -40,8 +40,8 @@ connection.on("LobbyNameExists", function (lobbyName) {
     alert("Lobby name '" + lobbyName + "' already exists. Please choose a different name.");
 });
 
-connection.on("PlayerJoined", function (playerName) {
-    // Handle player joined event (e.g., update UI)
+connection.on("PlayerJoined", function (playerName, lobbyName) {
+    window.location.href = "/lobbyPage?name=" + lobbyName
 });
 
 connection.on("PlayerLeft", function (playerName) {
