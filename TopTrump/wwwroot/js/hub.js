@@ -31,7 +31,19 @@ connection.on("UpdateLobbies", function (lobbyName) {
     li.textContent = `${lobbyName}`
 });
 
+connection.on("LobbyCreated", function (lobbyName) {
+    window.location.href = "/lobbyPage?name=" + lobbyName;
+});
+
 connection.on("LobbyNameExists", function (lobbyName) {
     // Handle the case where the lobby name already exists
     alert("Lobby name '" + lobbyName + "' already exists. Please choose a different name.");
+});
+
+connection.on("PlayerJoined", function (playerName) {
+    // Handle player joined event (e.g., update UI)
+});
+
+connection.on("PlayerLeft", function (playerName) {
+    // Handle player left event (e.g., update UI)
 });

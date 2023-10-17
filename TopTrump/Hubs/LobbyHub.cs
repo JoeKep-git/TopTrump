@@ -26,6 +26,7 @@ namespace TopTrump.Hubs
         {
             if (lobbies.ContainsKey(lobbyName))
             {
+                Console.WriteLine(Context.User.Identity.Name);
                 lobbies[lobbyName].Add(Context.User.Identity.Name); //may need to changing for identity that we use
                 await Groups.AddToGroupAsync(Context.ConnectionId, lobbyName);
                 await Clients.Group(lobbyName).SendAsync("PlayerJoined", Context.User.Identity.Name);
@@ -34,6 +35,20 @@ namespace TopTrump.Hubs
             {
                 await Clients.Caller.SendAsync("LobbyNotFound", lobbyName);
             }
+        }
+
+        public override async Task OnDisconnectedAsync(Exception exception)
+        {
+            foreach (var lobby in lobbies)
+            {
+                if (lobby.Value.Contains(Context.User.Identity.Name))
+                {
+                    lobby.Value.Remove(Context.User.Identity.Name);
+                    await Clients.Group(lobby.Key).SendAsync("PlayerLeft", Context.User.Identity.Name);
+                }
+            }
+
+            await base.OnDisconnectedAsync(exception);
         }
     }
 
