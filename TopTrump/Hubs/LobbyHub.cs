@@ -10,14 +10,14 @@ namespace TopTrump.Hubs
         {
             // Create a new lobby
             // You may want to add lobby to a list or store in a database
-            await Clients.All.SendAsync("UpdateLobbies");
+            await Clients.All.SendAsync("UpdateLobbies", lobbyName);
         }
 
-        public async Task JoinLobby(string lobbyName, string playerName)
+        public async Task JoinLobby(string lobbyName)
         {
             // Add player to the lobby
             // Notify other players in the lobby
-            await Clients.All.SendAsync("UpdateLobbies");
+            await Clients.All.SendAsync("UpdateLobbies", lobbyName);
         }
     }
 
