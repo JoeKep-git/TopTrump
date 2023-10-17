@@ -16,7 +16,6 @@ document.getElementById("createLobbyBtn").addEventListener("click", function () 
     connection.invoke("CreateLobby", lobbyName).catch(err => {
         console.error(err.toString());
     });
-
     console.log("testing " + lobbyName);
 });
 document.getElementById("joinLobbyBtn").addEventListener("click", function () {
@@ -30,4 +29,9 @@ connection.on("UpdateLobbies", function (lobbyName) {
     document.getElementById("lobbyList").appendChild(li);
     console.log("This is listing lobbies: " + lobbyName);
     li.textContent = `${lobbyName}`
+});
+
+connection.on("LobbyNameExists", function (lobbyName) {
+    // Handle the case where the lobby name already exists
+    alert("Lobby name '" + lobbyName + "' already exists. Please choose a different name.");
 });
