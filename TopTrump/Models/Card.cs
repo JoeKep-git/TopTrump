@@ -14,22 +14,18 @@ namespace TopTrump.Models
         public required string CardName { get; set; }
 
         [Required]
-        [MaxLength(100)]
         [Display(Name = "Stat 1")]
         public required int Stat1 { get; set; }
 
         [Required]
-        [MaxLength(100)]
         [Display(Name = "Stat 2")]
         public required int Stat2 { get; set; }
 
         [Required]
-        [MaxLength(100)]
         [Display(Name = "Stat 1")]
         public required int Stat3 { get; set; }
 
         [Required]
-        [MaxLength(100)]
         [Display(Name = "Stat 2")]
         public required int Stat4 { get; set; }
         [ForeignKey("Deck")]
