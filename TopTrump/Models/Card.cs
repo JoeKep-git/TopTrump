@@ -22,11 +22,11 @@ namespace TopTrump.Models
         public required int Stat2 { get; set; }
 
         [Required]
-        [Display(Name = "Stat 1")]
+        [Display(Name = "Stat 3")]
         public required int Stat3 { get; set; }
 
         [Required]
-        [Display(Name = "Stat 2")]
+        [Display(Name = "Stat 4")]
         public required int Stat4 { get; set; }
         [ForeignKey("Deck")]
         public int DeckId { get; set; }
@@ -41,5 +41,10 @@ namespace TopTrump.Models
         [Display(Name = "Description")]
         [DataType(DataType.Text)]
         public string? Description { get; set; }
+
+        internal int GetStatValue(string selectedStat)
+        {
+            
+        }
     }
 }
