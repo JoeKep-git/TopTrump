@@ -1,4 +1,8 @@
-﻿namespace TopTrump.Models
+﻿using System.Reflection;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using Mono.TextTemplating;
+
+namespace TopTrump.Models
 {
     public class Bot
     {
@@ -10,22 +14,60 @@
             Name = name;
             Hand = new List<Card>();
         }
-
-        public Card PlayCard()
+        //Medium difficulty
+        public Card PlayCard(string selectedStat, string difficulty)
         {
-            Random random = new Random();
-            int randomIndex = random.Next(Hand.Count);
-            Card selectedCard = Hand[randomIndex];
-            Hand.RemoveAt(randomIndex);
-            return selectedCard;
-        }
+            try
+            {
+                //easy mode
+                if (difficulty == "Easy")
+                {
+                    //Order by lowest to highest
+                    PropertyInfo statProperty = typeof(Card).GetProperty(selectedStat);
+                    if (statProperty != null && statProperty.PropertyType == typeof(int))
+                    {
+                        Card selectedCard = Hand.OrderBy(card => (int)statProperty.GetValue(card)).FirstOrDefault();
+                        if (selectedCard != null)
+                        {
+                            Hand.Remove(selectedCard);
+                        }
+                        return selectedCard;
+                    }
+                }
 
-        public Card PlayCard(string selectedStat)
-        {
-            // For simplicity, let's assume the bot selects the card with the highest value for the selected stat
-            Card selectedCard = Hand.OrderByDescending(card => card.GetStatValue(selectedStat)).First();
-            Hand.Remove(selectedCard);
-            return selectedCard;
+                //medium difficulty
+                else if (difficulty == "Medium")
+                {
+                    //Pick a random card
+                    Random random = new Random();
+                    int randomIndex = random.Next(Hand.Count);
+                    Card selectedCard = Hand[randomIndex];
+                    Hand.RemoveAt(randomIndex);
+                    return selectedCard;
+                }
+                //hard mode
+                else if(difficulty == "Hard")
+                {
+                    //Order by highest to lowest
+                    PropertyInfo statProperty = typeof(Card).GetProperty(selectedStat);
+                    if (statProperty != null && statProperty.PropertyType == typeof(int))
+                    {
+                        Card selectedCard = Hand.OrderByDescending(card => (int)statProperty.GetValue(card)).First();
+                        Hand.Remove(selectedCard);
+                        return selectedCard;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Invalid stat name");
+                    }
+                }
+
+                return null;
+            } catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
         }
     }
 
