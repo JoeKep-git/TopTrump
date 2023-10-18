@@ -130,9 +130,9 @@ namespace TopTrump.Areas.Identity.Pages.Account
             {
                 var user = new AppUser
                 {
+                    UserName = Input.UserName,
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
-                    UserName = Input.UserName,
                     Email = Input.Email,
                 };
 
