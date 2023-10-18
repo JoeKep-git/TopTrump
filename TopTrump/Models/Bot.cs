@@ -69,6 +69,14 @@ namespace TopTrump.Models
                 return null;
             }
         }
+
+        public void Win(List<Card> cardsWon)
+        {
+            foreach (var cards in cardsWon)
+            {
+                Hand.Add(cards);
+            }
+        }
     }
 
 }
