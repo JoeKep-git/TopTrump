@@ -583,3 +583,4 @@ C:\Users\youni\Source\Repos\TopTrump\TopTrump\obj\Debug\net7.0\TopTrump.pdb
 C:\Users\youni\Source\Repos\TopTrump\TopTrump\obj\Debug\net7.0\TopTrump.genruntimeconfig.cache
 C:\Users\youni\Source\Repos\TopTrump\TopTrump\obj\Debug\net7.0\ref\TopTrump.dll
 C:\Users\ohhja\Github SSD\Novus\TopTrump\TopTrump\TopTrump\bin\Debug\net7.0\libman.json
+C:\Users\youni\Source\Repos\TopTrump\TopTrump\bin\Debug\net7.0\libman.json
