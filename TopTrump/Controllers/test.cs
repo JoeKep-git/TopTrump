@@ -16,7 +16,7 @@ public class TestController : Controller {
         //Get card and associated deck data
         var card = _context.Cards
             .Include(c => c.Deck)
-            .FirstOrDefault(c => c.CardId == 2);
+            .FirstOrDefault(c => c.CardId == 1);
 
         // Create the ViewModel and pass the Card object to it
         var viewModel = new CardViewModel {

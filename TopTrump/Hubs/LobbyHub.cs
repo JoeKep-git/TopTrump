@@ -29,6 +29,10 @@ namespace TopTrump.Hubs
                 lobbies[lobbyName].Add(Context.User.Identity.Name); //may need to changing for identity that we use
                 await Groups.AddToGroupAsync(Context.ConnectionId, lobbyName);
                 Console.WriteLine("Lobby Join: User: " + Context.User.Identity.Name + " LobbyName: " + lobbyName);
+
+                //Get list of connected users in the lobby
+                List<string> connectedUsers = lobbies[lobbyName];
+
                 await Clients.Group(lobbyName).SendAsync("PlayerJoined", Context.User.Identity.Name, lobbyName);
             }
             else
