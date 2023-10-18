@@ -1,5 +1,19 @@
 ﻿@model TopTrump.Models.CardViewModel
 @namespace TopTrump.Views.Test.Components
+<style>
+    .cardDeets {
+        background-color: cadetblue;
+        font-family: Arial, sans-serif;
+        width:300px;
+    }
+</style>
 
-<h1>Card Details</h1>
-<h2>@Model.Card.CardName</h2>
+
+<div class="cardDeets">
+    <h1>Card Details</h1>
+    <h2>@Model.Card.CardName</h2>
+    <p>@Model.Stat1Name    :    @Model.Card.Stat1</p>
+    <p>@Model.Stat2Name    :    @Model.Card.Stat2</p>
+    <p>@Model.Stat3Name    :    @Model.Card.Stat3</p>
+    <p>@Model.Stat4Name    :    @Model.Card.Stat4</p>
+</div>
