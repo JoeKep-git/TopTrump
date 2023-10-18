@@ -34,11 +34,12 @@ namespace TopTrump.Data.Migrations
                     CardId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CardName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Stat1 = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    Stat2 = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    Stat3 = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    Stat4 = table.Column<int>(type: "int", maxLength: 100, nullable: false),
+                    Stat1 = table.Column<int>(type: "int", nullable: false),
+                    Stat2 = table.Column<int>(type: "int", nullable: false),
+                    Stat3 = table.Column<int>(type: "int", nullable: false),
+                    Stat4 = table.Column<int>(type: "int", nullable: false),
                     DeckId = table.Column<int>(type: "int", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
                 },
                 constraints: table =>

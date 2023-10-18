@@ -12,7 +12,7 @@ using TopTrump.Data;
 namespace TopTrump.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231009141756_init")]
+    [Migration("20231018133118_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -247,20 +247,20 @@ namespace TopTrump.Data.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<string>("Image")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<int>("Stat1")
-                        .HasMaxLength(100)
                         .HasColumnType("int");
 
                     b.Property<int>("Stat2")
-                        .HasMaxLength(100)
                         .HasColumnType("int");
 
                     b.Property<int>("Stat3")
-                        .HasMaxLength(100)
                         .HasColumnType("int");
 
                     b.Property<int>("Stat4")
-                        .HasMaxLength(100)
                         .HasColumnType("int");
 
                     b.HasKey("CardId");

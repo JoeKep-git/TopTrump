@@ -30,7 +30,7 @@ namespace TopTrump.Models
         public required int Stat4 { get; set; }
         [ForeignKey("Deck")]
         public int DeckId { get; set; }
-        public Deck Deck { get; set; }
+        public Deck? Deck { get; set; }
 
         [MaxLength(255)]
         [Display(Name = "Image")]
