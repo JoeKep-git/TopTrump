@@ -41,10 +41,5 @@ namespace TopTrump.Models
         [Display(Name = "Description")]
         [DataType(DataType.Text)]
         public string? Description { get; set; }
-
-        internal int GetStatValue(string selectedStat)
-        {
-            
-        }
     }
 }
