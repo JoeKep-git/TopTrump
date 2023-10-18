@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\youni\\Source\\Repos\\TopTrump\\TopTrump\\TopTrump.csproj": {}
+    "C:\\Users\\youni\\source\\repos\\TopTrump\\TopTrump\\TopTrump.csproj": {}
   },
   "projects": {
-    "C:\\Users\\youni\\Source\\Repos\\TopTrump\\TopTrump\\TopTrump.csproj": {
+    "C:\\Users\\youni\\source\\repos\\TopTrump\\TopTrump\\TopTrump.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\youni\\Source\\Repos\\TopTrump\\TopTrump\\TopTrump.csproj",
+        "projectUniqueName": "C:\\Users\\youni\\source\\repos\\TopTrump\\TopTrump\\TopTrump.csproj",
         "projectName": "TopTrump",
-        "projectPath": "C:\\Users\\youni\\Source\\Repos\\TopTrump\\TopTrump\\TopTrump.csproj",
+        "projectPath": "C:\\Users\\youni\\source\\repos\\TopTrump\\TopTrump\\TopTrump.csproj",
         "packagesPath": "C:\\Users\\youni\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\youni\\Source\\Repos\\TopTrump\\TopTrump\\obj\\",
+        "outputPath": "C:\\Users\\youni\\source\\repos\\TopTrump\\TopTrump\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
