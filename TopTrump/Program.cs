@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using TopTrump.Data;
 using Microsoft.Extensions.DependencyInjection;
 using TopTrump.Hubs;
+using TopTrump.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,18 +34,17 @@ else
     app.UseHsts();
 }
 
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 app.MapHub<LobbyHub>("/lobbyHub");
+
 
 app.Run();

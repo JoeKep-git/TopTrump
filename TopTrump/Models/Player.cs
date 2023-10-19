@@ -3,15 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TopTrump.Models
 {
-    public class Player
+    public class Player : IPlayer
     {
         public string Name { get; set; }
-        public List<Card> UserHand { get; set; }
+        public List<Card> UserHand { get; set; } = new List<Card>();
 
         public Player(string name)
         {
             Name = name;
-            UserHand = new List<Card>();
         }
 
         public Card PlayCard()

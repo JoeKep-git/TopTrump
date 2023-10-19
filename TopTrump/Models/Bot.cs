@@ -4,15 +4,14 @@ using System.Linq;
 
 namespace TopTrump.Models
 {
-    public class Bot
+    public class Bot : IBot
     {
         public string Name { get; set; }
-        public List<Card> BotHand { get; set; }
+        public List<Card> BotHand { get; set; } = new List<Card>();
 
         public Bot(string name)
         {
             Name = name;
-            BotHand = new List<Card>();
         }
 
         public Card PlayCard(string selectedStat, string difficulty)
