@@ -1,0 +1,41 @@
+﻿@model TopTrump.Models.SelectStatViewModel
+
+<h1>Select a Stat</h1>
+
+<p>Cards:</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Card Name</th>
+            <th>@Model.StatNames[0]</th>
+            <th>@Model.StatNames[1]</th>
+            <th>@Model.StatNames[2]</th>
+            <th>@Model.StatNames[3]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var card in Model.Cards)
+        {
+            <tr>
+                <td>@card.CardName</td>
+                <td>@card.Stat1</td>
+                <td>@card.Stat2</td>
+                <td>@card.Stat3</td>
+                <td>@card.Stat4</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<form asp-action="PlayRound">
+    <div class="form-group">
+        <label for="selectedStat">Select a Stat:</label>
+        <select asp-for="SelectedStat" class="form-control">
+            <option value="@Model.StatNames[0]">@Model.StatNames[0]</option>
+            <option value="@Model.StatNames[1]">@Model.StatNames[1]</option>
+            <option value="@Model.StatNames[2]">@Model.StatNames[2]</option>
+            <option value="@Model.StatNames[3]">@Model.StatNames[3]</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Play Round</button>
+</form>

@@ -5,32 +5,29 @@ namespace TopTrump.Models
 {
     public class Player
     {
-        [Required]
         public string Name { get; set; }
-        [Required]
-        public List<Card> Hand { get; set; }
+        public List<Card> UserHand { get; set; }
 
         public Player(string name)
         {
             Name = name;
-            Hand = new List<Card>();
+            UserHand = new List<Card>();
         }
 
-        public Card PlayCard(Card card)
+        public Card PlayCard()
         {
-            Hand.Remove(card);
-            return card;
-        }
-        //select the stat
-        [BindProperty]
-        public string SelectedStat { get; set; }
-        //when player wins they get the cards that were played that round.
-        public void Win(List<Card> cardsWon)
-        {
-            foreach (var cards in cardsWon)
+            // Player chooses a card (you can implement player interaction here)
+            if (UserHand.Count > 0)
             {
-                Hand.Add(cards);
+                return UserHand.First();
             }
+
+            return null; // No cards to play
+        }
+
+        public void Win(List<Card> cards)
+        {
+            UserHand.AddRange(cards);
         }
     }
 }

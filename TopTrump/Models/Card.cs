@@ -41,5 +41,21 @@ namespace TopTrump.Models
         [Display(Name = "Description")]
         [DataType(DataType.Text)]
         public string? Description { get; set; }
+        public int GetStatValue(string statName)
+        {
+            switch (statName)
+            {
+                case "Stat1":
+                    return Stat1;
+                case "Stat2":
+                    return Stat2;
+                case "Stat3":
+                    return Stat3;
+                case "Stat4":
+                    return Stat4;
+                default:
+                    throw new ArgumentException("Invalid stat name");
+            }
+        }
     }
 }
