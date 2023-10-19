@@ -90,11 +90,6 @@ namespace TopTrump.Areas.Identity.Pages.Account
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
 
-            [Required]
-            [DataType(DataType.Text)]
-            [Display(Name = "Username")]
-            public string UserName { get; set; }
-
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -130,7 +125,6 @@ namespace TopTrump.Areas.Identity.Pages.Account
             {
                 var user = new AppUser
                 {
-                    UserName = Input.UserName,
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
                     Email = Input.Email,
