@@ -155,7 +155,7 @@ namespace TopTrump.Controllers
 
             if (playerHand == null || botHand == null)
             {
-                return Json(new { redirectTo = Url.Action("Index", "YourController") });
+                return Json(new { redirectTo = Url.Action("Index", "Game") });
             }
 
             var playerCard = playerHand.First();
@@ -180,7 +180,7 @@ namespace TopTrump.Controllers
             if (!playerHand.Any() || !botHand.Any())
             {
                 Console.WriteLine("Winner is " + winner);
-                return RedirectToAction("Index");
+                return Json(new { redirectTo = Url.Action("Index", "Home") });
             }
 
             var viewModel = new PlayRoundViewModel

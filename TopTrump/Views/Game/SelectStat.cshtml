@@ -19,7 +19,8 @@
                 <td>@card.Stat3</td>
                 <td>@card.Stat4</td>
                 <td>
-                    <button type="button" class="btn btn-primary select-card-btn" data-card-id="@card.CardId">Select Card</button>
+                    <input type="hidden" name="SelectedCardId" value="@card.CardId" />
+                    <button type="button" class="btn btn-primary select-card-btn" data-card-id="@card.CardId" disabled>Select Card</button>
                 </td>
             </tr>
         }
@@ -57,7 +58,11 @@
                         type: 'POST',
                         data: { SelectedCardId: selectedCardId, SelectedStat: selectedStat },
                         success: function (data) {
-                            $('#roundResultsContainer').html(data);
+                            if (data.redirectTo) {
+                                window.location.href = data.redirectTo;
+                            } else {
+                                $('#roundResultsContainer').html(data);
+                            }
                         }
                     });
                 } else {
@@ -70,5 +75,6 @@
                 selectCardButtons.prop('disabled', this.value === "");
             });
         });
+
     </script>
 }
