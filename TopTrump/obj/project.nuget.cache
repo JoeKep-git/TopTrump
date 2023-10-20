@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HIZhjWG6YoKxNAe0dHp2SvkAHqcPftlRp0JaQVRIw553bLWQ7nmxkss8qcn70gCtcIkkXsDqSsRiR1fjnhFuLA==",
+  "dgSpecHash": "TzaSsM/LnETOM1svKHWxYDI2GEO83DJ+EcIuAJphJCpADDMoyfJK+T3bXBzWcaLyJjezfCLV/yOPgzRKnJWy7A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\youni\\source\\repos\\TopTrump\\TopTrump\\TopTrump.csproj",
+  "projectFilePath": "C:\\Younis\\Novus Training\\TopTrump\\TopTrump\\TopTrump.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\youni\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\youni\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
