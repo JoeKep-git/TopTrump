@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using TopTrump.Data;
 using TopTrump.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TopTrump.Controllers
 {
@@ -20,7 +21,7 @@ namespace TopTrump.Controllers
         {
             _context = context;
         }
-
+        [Authorize]
         [HttpGet]
         public IActionResult Index()
         {
@@ -35,7 +36,7 @@ namespace TopTrump.Controllers
 
             return View(viewModel);
         }
-
+        [Authorize]
         [HttpPost]
         public IActionResult StartGame(int selectedDeckId, string selectedDifficulty)
         {
@@ -55,7 +56,7 @@ namespace TopTrump.Controllers
 
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public IActionResult SelectStat()
         {
             int selectedDeckId = Convert.ToInt32(TempData["SelectedDeckId"]);
@@ -98,7 +99,7 @@ namespace TopTrump.Controllers
         }
 
 
-
+        [Authorize]
         [HttpPost]
         public IActionResult SelectStat(string stat)
         {
@@ -136,7 +137,7 @@ namespace TopTrump.Controllers
             return View(viewModel);
         }
 
-
+        [Authorize]
         public IActionResult PlayRound(int selectedCardId, string SelectedStat)
         {
             Console.WriteLine("Selected card id: " + selectedCardId);
@@ -201,7 +202,7 @@ namespace TopTrump.Controllers
             // For example, compare the card values
             return "Player"; // Replace with your logic
         }
-
+        [Authorize]
         public IActionResult GameOver(string Winner)
         {
             ViewBag.Winner = Winner;

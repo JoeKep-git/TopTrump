@@ -12766,23 +12766,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\youni\\.nuget\\packages\\": {},
+    "C:\\Users\\ohhja\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Younis\\Novus Training\\TopTrump\\TopTrump\\TopTrump.csproj",
+      "projectUniqueName": "C:\\Users\\ohhja\\Github SSD\\Novus\\TopTrump\\TopTrump\\TopTrump\\TopTrump.csproj",
       "projectName": "TopTrump",
-      "projectPath": "C:\\Younis\\Novus Training\\TopTrump\\TopTrump\\TopTrump.csproj",
-      "packagesPath": "C:\\Users\\youni\\.nuget\\packages\\",
-      "outputPath": "C:\\Younis\\Novus Training\\TopTrump\\TopTrump\\obj\\",
+      "projectPath": "C:\\Users\\ohhja\\Github SSD\\Novus\\TopTrump\\TopTrump\\TopTrump\\TopTrump.csproj",
+      "packagesPath": "C:\\Users\\ohhja\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ohhja\\Github SSD\\Novus\\TopTrump\\TopTrump\\TopTrump\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\youni\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ohhja\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
