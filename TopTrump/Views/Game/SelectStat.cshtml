@@ -23,15 +23,12 @@
                 <td>@card.Stat3</td>
                 <td>@card.Stat4</td>
                 <td>
-                    <form asp-action="PlayRound" method="submitPlayRoundForm(); return false;">
+
                         <input type="hidden" name="SelectedCardId" value="@card.CardId" />
                         <button type="submit" class="btn btn-primary select-card-btn" disabled>Select Card</button>
-                    </form>
                 </td>
             </tr>
         }
-        <div id="roundResultsContainer"></div>
-
     </tbody>
 </table>
 
@@ -48,6 +45,8 @@
         </select>
     </div>
 </form>
+
+<div id="roundResultsContainer"></div>
 
 @section scripts {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -75,24 +74,26 @@
 
     <script>
         $(document).ready(function () {
-            $('#playRoundForm').submit(function (e) {
-                e.preventDefault();
+            $('.select-card-btn').click(function () {
+                var selectedCardId = $(this).data('card-id');
+                var selectedStat = $('#selectedStat').val();
 
-                var formData = new FormData(this);
-
-                $.ajax({
-                    url: '@Url.Action("PlayRound", "Game")',
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (data) {
-                        $('#roundResultsContainer').html(data);
-                    }
-                });
+                if (selectedStat !== "") {
+                    $.ajax({
+                        url: '@Url.Action("PlayRound", "Game")',
+                        type: 'POST',
+                        data: { SelectedCardId: selectedCardId, SelectedStat: selectedStat },
+                        success: function (data) {
+                            $('#roundResultsContainer').append(data);
+                        }
+                    });
+                } else {
+                    alert("Please select a stat.");
+                }
             });
         });
     </script>
+
 
 }
 
