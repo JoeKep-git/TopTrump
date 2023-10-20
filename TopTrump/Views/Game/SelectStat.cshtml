@@ -1,8 +1,4 @@
-﻿@model TopTrump.Models.SelectStatViewModel
-
-<h1>Select a Stat</h1>
-
-<p>Cards:</p>
+﻿<p>Cards:</p>
 <table class="table">
     <thead>
         <tr>
@@ -23,9 +19,7 @@
                 <td>@card.Stat3</td>
                 <td>@card.Stat4</td>
                 <td>
-
-                        <input type="hidden" name="SelectedCardId" value="@card.CardId" />
-                        <button type="submit" class="btn btn-primary select-card-btn" disabled>Select Card</button>
+                    <button type="button" class="btn btn-primary select-card-btn" data-card-id="@card.CardId">Select Card</button>
                 </td>
             </tr>
         }
@@ -33,7 +27,7 @@
 </table>
 
 <!-- Add a dropdown list to select a stat -->
-<form asp-action="PlayRound" method="submitPlayRoundForm(); return false;">
+<form asp-action="PlayRound" method="POST">
     <div class="form-group">
         <label for="selectedStat">Select a Stat:</label>
         <select id="selectedStat" name="SelectedStat" class="form-control">
@@ -49,28 +43,7 @@
 <div id="roundResultsContainer"></div>
 
 @section scripts {
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script>
-        document.querySelectorAll('.select-card-btn').forEach(function (button) {
-            button.addEventListener("click", function () {
-                var selectStat = document.getElementById("selectedStat");
-                if (selectStat.value !== "") {
-                    return true;
-                } else {
-                    alert("Please select a stat.");
-                    return false;
-                }
-            });
-        });
-
-        document.getElementById("selectedStat").addEventListener("change", function () {
-            var selectCardButtons = document.querySelectorAll('.select-card-btn');
-            selectCardButtons.forEach(function (button) {
-                button.disabled = (this.value === "");
-            }, this);
-        });
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -84,17 +57,18 @@
                         type: 'POST',
                         data: { SelectedCardId: selectedCardId, SelectedStat: selectedStat },
                         success: function (data) {
-                            $('#roundResultsContainer').append(data);
+                            $('#roundResultsContainer').html(data);
                         }
                     });
                 } else {
                     alert("Please select a stat.");
                 }
             });
+
+            $('#selectedStat').change(function () {
+                var selectCardButtons = $('.select-card-btn');
+                selectCardButtons.prop('disabled', this.value === "");
+            });
         });
     </script>
-
-
 }
-
-

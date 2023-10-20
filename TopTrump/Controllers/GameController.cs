@@ -155,7 +155,7 @@ namespace TopTrump.Controllers
 
             if (playerHand == null || botHand == null)
             {
-                return RedirectToAction("Index");
+                return Json(new { redirectTo = Url.Action("Index", "YourController") });
             }
 
             var playerCard = playerHand.First();
