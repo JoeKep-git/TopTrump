@@ -102,12 +102,46 @@ namespace TopTrump.Controllers
         [HttpPost]
         public IActionResult SelectStat(string stat)
         {
-            TempData["SelectedStat"] = stat;
-            return RedirectToAction("PlayRound");
+            int selectedDeckId = Convert.ToInt32(TempData["SelectedDeckId"]);
+            var selectedDeck = _context.Decks
+                .Include(d => d.Cards)
+                .FirstOrDefault(d => d.DeckId == selectedDeckId);
+
+            if (selectedDeck == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var playerHandJson = TempData["PlayerCards"] as string;
+
+            var options = new JsonSerializerOptions
+            {
+                ReferenceHandler = ReferenceHandler.Preserve
+            };
+
+            var playerHand = JsonSerializer.Deserialize<List<Card>>(playerHandJson, options);
+
+            var viewModel = new SelectStatViewModel
+            {
+                Cards = playerHand,
+                StatNames = new List<string>
+                {
+                    selectedDeck.Stat1,
+                    selectedDeck.Stat2,
+                    selectedDeck.Stat3,
+                    selectedDeck.Stat4
+                }
+            };
+
+            return View(viewModel);
         }
 
-        public IActionResult PlayRound()
+
+        public IActionResult PlayRound(int selectedCardId, string SelectedStat)
         {
+            Console.WriteLine("Selected card id: " + selectedCardId);
+            Console.WriteLine("Selected stat: " + SelectedStat);
+
             var options = new JsonSerializerOptions
             {
                 ReferenceHandler = ReferenceHandler.Preserve
@@ -145,6 +179,7 @@ namespace TopTrump.Controllers
 
             if (!playerHand.Any() || !botHand.Any())
             {
+                Console.WriteLine("Winner is " + winner);
                 return RedirectToAction("Index");
             }
 
@@ -155,8 +190,9 @@ namespace TopTrump.Controllers
                 Winner = winner
             };
 
-            return View(viewModel);
+            return PartialView("_PlayRoundResult", viewModel);
         }
+
 
 
         private string DetermineWinner(Card playerCard, Card botCard)
